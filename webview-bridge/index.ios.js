@@ -180,7 +180,6 @@ var WebViewBridge = React.createClass({
     delete props.onBridgeMessage;
     delete props.onShouldStartLoadWithRequest;
 
-    console.log("source " + source);
     var webView =
       <RCTWebViewBridge
         ref={RCT_WEBVIEWBRIDGE_REF}

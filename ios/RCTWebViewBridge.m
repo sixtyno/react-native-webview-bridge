@@ -104,7 +104,6 @@ RCT_NOT_IMPLEMENTED(- (instancetype)initWithCoder:(NSCoder *)aDecoder)
     if(!returnValue || [returnValue isEqualToString:@""]) {
         returnValue = [_webView stringByEvaluatingJavaScriptFromString:message];
     }
-    NSLog(@"%@-%@", message, returnValue);
 }
 
 - (NSURL *)URL
