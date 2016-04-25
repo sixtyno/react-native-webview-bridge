@@ -36,7 +36,7 @@ RCT_EXPORT_MODULE()
   return webView;
 }
 
-RCT_EXPORT_VIEW_PROPERTY(source, NSDictionary)
+RCT_EXPORT_VIEW_PROPERTY(source, id)
 RCT_REMAP_VIEW_PROPERTY(bounces, _webView.scrollView.bounces, BOOL)
 RCT_REMAP_VIEW_PROPERTY(scrollEnabled, _webView.scrollView.scrollEnabled, BOOL)
 RCT_REMAP_VIEW_PROPERTY(scalesPageToFit, _webView.scalesPageToFit, BOOL)

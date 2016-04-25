@@ -103,6 +103,7 @@ var WebViewBridge = React.createClass({
      */
     onBridgeMessage: PropTypes.func,
 
+    source: PropTypes.object.isRequired,
     hideKeyboardAccessoryView: PropTypes.bool,
   },
 
