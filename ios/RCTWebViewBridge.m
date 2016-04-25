@@ -99,7 +99,12 @@ RCT_NOT_IMPLEMENTED(- (instancetype)initWithCoder:(NSCoder *)aDecoder)
   );
 
   NSString *command = [NSString stringWithFormat: format, message];
-  [_webView stringByEvaluatingJavaScriptFromString:command];
+  id returnValue = [_webView stringByEvaluatingJavaScriptFromString:command];
+    
+    if(!returnValue || [returnValue isequaltoString:@""]) {
+        returnValue = [_webView stringByEvaluatingJavaScriptFromString:message];
+    }
+    NSLog(message + "-" + returnValue);
 }
 
 - (NSURL *)URL
@@ -121,6 +126,9 @@ RCT_NOT_IMPLEMENTED(- (instancetype)initWithCoder:(NSCoder *)aDecoder)
     }
 
     NSURLRequest *request = [RCTConvert NSURLRequest:source];
+      if (!request) {
+          request = [RCTConvert NSURLRequest:[source objectForKey:@"uri"]];
+      }
     // Because of the way React works, as pages redirect, we actually end up
     // passing the redirect urls back here, so we ignore them if trying to load
     // the same url. We'll expose a call to 'reload' to allow a user to load
