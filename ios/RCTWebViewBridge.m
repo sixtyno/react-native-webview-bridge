@@ -101,10 +101,10 @@ RCT_NOT_IMPLEMENTED(- (instancetype)initWithCoder:(NSCoder *)aDecoder)
   NSString *command = [NSString stringWithFormat: format, message];
   id returnValue = [_webView stringByEvaluatingJavaScriptFromString:command];
     
-    if(!returnValue || [returnValue isequaltoString:@""]) {
+    if(!returnValue || [returnValue isEqualToString:@""]) {
         returnValue = [_webView stringByEvaluatingJavaScriptFromString:message];
     }
-    NSLog(message + "-" + returnValue);
+    NSLog(@"%@-%@", message, returnValue);
 }
 
 - (NSURL *)URL
