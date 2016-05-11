@@ -40,7 +40,7 @@ NSString *const RCTWebViewBridgeSchema = @"wvb";
 }
 @end
 
-@interface RCTWebViewBridge () <UIWebViewDelegate, RCTAutoInsetsProtocol>
+@interface RCTWebViewBridge () <UIWebViewDelegate, RCTAutoInsetsProtocol, UIScrollViewDelegate>
 
 @property (nonatomic, copy) RCTDirectEventBlock onLoadingStart;
 @property (nonatomic, copy) RCTDirectEventBlock onLoadingFinish;
@@ -64,9 +64,19 @@ NSString *const RCTWebViewBridgeSchema = @"wvb";
     _contentInset = UIEdgeInsetsZero;
     _webView = [[UIWebView alloc] initWithFrame:self.bounds];
     _webView.delegate = self;
+
+    //disabled multiple touching and pinching
+    _webView.multipleTouchEnabled = false;    
+    _webView.scrollView.delegate = self;
+
     [self addSubview:_webView];
   }
   return self;
+}
+
+//to disable pinching
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+  return nil;
 }
 
 RCT_NOT_IMPLEMENTED(- (instancetype)initWithCoder:(NSCoder *)aDecoder)
