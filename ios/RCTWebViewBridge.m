@@ -70,6 +70,10 @@ NSString *const ERROR_DOMAIN = @"WEBVIEW_BRIDGE_ERROR_DOMAIN";
         _webView = [[UIWebView alloc] initWithFrame:self.bounds];
         _webView.delegate = self;
         
+        // enable video autoplay
+        _webView.allowsInlineMediaPlayback = true;
+        _webView.mediaPlaybackRequiresUserAction = false;
+        
         //disabled multiple touching and pinching
         _webView.multipleTouchEnabled = false;
         _webView.scrollView.delegate = self;
