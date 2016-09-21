@@ -53,6 +53,7 @@ NSString *const ERROR_DOMAIN = @"WEBVIEW_BRIDGE_ERROR_DOMAIN";
 @property (nonatomic) BOOL validatedRequest;
 @property (nonatomic, strong) NSURLRequest *request;
 
+@property (nonatomic, strong) NSURLConnection *lastConnection;
 @end
 
 @implementation RCTWebViewBridge
@@ -151,9 +152,13 @@ RCT_NOT_IMPLEMENTED(- (instancetype)initWithCoder:(NSCoder *)aDecoder)
             _request = [RCTConvert NSURLRequest:source];
         }
         
+        
         NSURLConnection *connection = [NSURLConnection connectionWithRequest:_request delegate:self];
         
+        [self.lastConnection cancel];
+        
         [connection start];
+        self.lastConnection = connection;
     }
 }
 
@@ -472,5 +477,7 @@ RCT_NOT_IMPLEMENTED(- (instancetype)initWithCoder:(NSCoder *)aDecoder)
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     [self onLoadingErrorFunction:error];
+    
+    [self.lastConnection cancel];
 }
 @end
