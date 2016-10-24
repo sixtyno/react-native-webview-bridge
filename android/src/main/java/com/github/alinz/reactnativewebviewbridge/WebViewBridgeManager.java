@@ -1,6 +1,7 @@
 package com.github.alinz.reactnativewebviewbridge;
 
 import android.webkit.WebView;
+import android.view.ViewGroup.LayoutParams;
 
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.uimanager.ThemedReactContext;
@@ -37,6 +38,10 @@ public class WebViewBridgeManager extends ReactWebViewManager {
     protected WebView createViewInstance(ThemedReactContext reactContext) {
         WebView root = super.createViewInstance(reactContext);
         root.addJavascriptInterface(new JavascriptBridge(root), "WebViewBridge");
+
+        root.setLayoutParams(
+            new LayoutParams(LayoutParams.MATCH_PARENT,
+                LayoutParams.MATCH_PARENT));
         return root;
     }
 
