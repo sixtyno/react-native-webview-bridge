@@ -1,5 +1,6 @@
 package com.github.alinz.reactnativewebviewbridge;
 
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.view.ViewGroup.LayoutParams;
 
