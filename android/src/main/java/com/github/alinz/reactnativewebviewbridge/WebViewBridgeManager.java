@@ -39,6 +39,9 @@ public class WebViewBridgeManager extends ReactWebViewManager {
         WebView root = super.createViewInstance(reactContext);
         root.addJavascriptInterface(new JavascriptBridge(root), "WebViewBridge");
 
+        root.getSettings().setAppCacheEnabled(false);
+        root.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
+        
         root.setLayoutParams(
             new LayoutParams(LayoutParams.MATCH_PARENT,
                 LayoutParams.MATCH_PARENT));
