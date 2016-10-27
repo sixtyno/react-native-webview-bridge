@@ -43,6 +43,11 @@ public class WebViewBridgeManager extends ReactWebViewManager {
         root.getSettings().setAppCacheEnabled(false);
         root.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
         
+        
+        root.setHorizontalScrollBarEnabled(false);
+        root.setVerticalScrollBarEnabled(false);
+        root.setBackgroundColor(Color.rgb(0, 0, 255));
+
         root.setLayoutParams(
             new LayoutParams(LayoutParams.MATCH_PARENT,
                 LayoutParams.MATCH_PARENT));
