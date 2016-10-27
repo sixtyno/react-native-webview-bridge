@@ -1,5 +1,6 @@
 package com.github.alinz.reactnativewebviewbridge;
 
+import android.graphics.Color;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.view.ViewGroup.LayoutParams;
@@ -43,7 +44,7 @@ public class WebViewBridgeManager extends ReactWebViewManager {
         root.getSettings().setAppCacheEnabled(false);
         root.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
         
-        
+
         root.setHorizontalScrollBarEnabled(false);
         root.setVerticalScrollBarEnabled(false);
         root.setBackgroundColor(Color.rgb(0, 0, 255));
