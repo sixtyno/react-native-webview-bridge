@@ -1,5 +1,7 @@
 package com.github.alinz.reactnativewebviewbridge;
 
+import android.content.pm.ApplicationInfo;
+import android.os.Build;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.view.ViewGroup.LayoutParams;
@@ -40,6 +42,12 @@ public class WebViewBridgeManager extends ReactWebViewManager {
         WebView root = super.createViewInstance(reactContext);
         root.addJavascriptInterface(new JavascriptBridge(root), "WebViewBridge");
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            if (0 != (reactContext.getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE))
+            {
+                root.setWebContentsDebuggingEnabled(true);
+            }
+        }
         root.getSettings().setAppCacheEnabled(false);
         root.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
         
