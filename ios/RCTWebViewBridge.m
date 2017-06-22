@@ -326,7 +326,9 @@ RCT_NOT_IMPLEMENTED(- (instancetype)initWithCoder:(NSCoder *)aDecoder)
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    
+
+    [UIApplication sharedApplication].applicationSupportsShakeToEdit = NO;
+
     if (self.validatedRequest) {
         //injecting WebViewBridge Script
         NSString *webViewBridgeScriptContent = [self webViewBridgeScript];
